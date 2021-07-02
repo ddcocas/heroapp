@@ -1,0 +1,44 @@
+<mat-toolbar>
+    <span>Edit hero</span>
+</mat-toolbar>
+<form [formGroup]="form">
+    <div class="row">
+        <div class="col-md-6">
+            <mat-form-field appearance="outline" class="custom-mat-input">
+                <mat-label>Name</mat-label>
+                <input appUppercaseinput formControlName="name" matInput placeholder="Type hero name">
+                <mat-error *ngIf="isControlHasError('name','required')">
+                    <strong>Required field</strong>
+                </mat-error>
+                <mat-error *ngIf="isControlHasError('name','minlength')">
+                    <strong> The name must have at less 5 characters</strong>
+                </mat-error>
+                <mat-error *ngIf="isControlHasError('name','maxlength')">
+                    <strong>The name must have maximum 5 characters</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-6">
+            <mat-form-field appearance="outline" class="custom-mat-input">
+                <mat-label>Creator</mat-label>
+                <input formControlName="creator" matInput placeholder="Type hero creator">
+                <mat-error *ngIf="isControlHasError('creator','required')">
+                    <strong>Required field</strong>
+                </mat-error>
+                <mat-error *ngIf="isControlHasError('creator','minlength')">
+                    <strong> The creator must have at less 5 characters</strong>
+                </mat-error>
+                <mat-error *ngIf="isControlHasError('creator','maxlength')">
+                    <strong>The creator must have maximum 5 characters</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-12" style="text-align: right;">
+            <button (click)="navigateback()" mat-raised-button style="margin-right: 10px;" color="warn">Cancel</button>
+            <button (click)="updateHero()" color="primary" mat-raised-button>Save</button>
+        </div>
+    </div>
+</form>
